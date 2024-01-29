@@ -1,0 +1,50 @@
+# _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+# 
+# ██████╗ ██╗   ██╗███╗   ██╗███████╗████████╗
+# ██╔══██╗██║   ██║████╗  ██║██╔════╝╚══██╔══╝
+# ██║  ██║██║   ██║██╔██╗ ██║███████╗   ██║   
+# ██║  ██║██║   ██║██║╚██╗██║╚════██║   ██║   
+# ██████╔╝╚██████╔╝██║ ╚████║███████║   ██║   
+# ╚═════╝  ╚═════╝ ╚═╝  ╚═══╝╚══════╝   ╚═╝   
+# _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+
+# Based on a configuration by edu-flores
+
+
+[global]
+    ### Geometry ###
+    width = (0, 400)
+    height = 300
+    origin = top-right
+    offset = 15x74
+    notification_limit = 1
+    indicate_hidden = no
+    padding = 15
+    horizontal_padding = 20
+    text_icon_padding = 15
+    frame_width = 0
+
+    ### Text ###
+    font = JetBrainsMono Nerd Font 12
+    alignment = right
+    hide_duplicate_count = true
+
+    ### Icons ###
+    max_icon_size = 64
+    enable_recursive_icon_lookup = true
+    icon_path = /usr/share/icons/gnome/16x16/status/:/usr/share/icons/gnome/16x16/devices/
+
+[urgency_low]
+    background = "#141C21"
+    foreground = "#F5F5F5"
+    timeout = 5
+
+[urgency_normal]
+    background = "#141C21"
+    foreground = "#F5F5F5"
+    timeout = 5
+
+[urgency_critical]
+    background = "#141C21"
+    foreground = "#F5F5F5"
+    timeout = 0

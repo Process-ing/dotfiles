@@ -1,0 +1,24 @@
+/* Based on a configuration by adi1090x */
+
+@import "colors.rasi"
+
+* {
+    background-color:       @bg;
+    text-color:             @fg;
+	font:				 	"JetBrainsMono Nerd Font 12";
+}
+
+window {
+    width:      			300px;
+    padding:    			33.3px;
+    border:					0px 0px 0px 5.33px;
+    border-radius:          0px;
+    border-color:           @bg3;
+    location:               center;
+    y-offset:               -2.67em;
+}
+
+entry {
+    expand: 				true;
+    text-color:				@bg2;
+}
