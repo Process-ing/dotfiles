@@ -171,21 +171,21 @@ bindsym XF86MonBrightnessUp exec brightnessctl --device=intel_backlight set +2%
  bindsym XF86MonBrightnessDown exec brightnessctl --device=intel_backlight set 2%-
 
 # Key binding for screenshot (using Flameshot)
-bindsym Print exec flameshot gui
+bindsym Print exec flameshot gui &
 
 # Key binding for restarting NetworkManager
-bindsym $mod+Shift+w exec $HOME/.config/scripts/restart-nm.sh
+bindsym $mod+Shift+w exec $HOME/.config/scripts/restart-nm.sh &
 
 # Reset screens
 exec_always $HOME/.config/scripts/reset-screens.sh &
 
 # Screen orientation control
-bindsym $mod+p exec $HOME/.config/scripts/reset-screens.sh portable-horizontal
-bindsym $mod+F7 exec $HOME/.config/scripts/reset-screens.sh portable-vertical
+bindsym $mod+p exec $HOME/.config/scripts/reset-screens.sh portable-horizontal &
+bindsym $mod+F7 exec $HOME/.config/scripts/reset-screens.sh portable-vertical &
 
 # Launch rofi
-bindsym $mod+Shift+Return exec $HOME/.config/scripts/launcher.sh
-bindsym $mod+Shift+Delete exec $HOME/.config/scripts/powermenu.sh
+bindsym $mod+Shift+Return exec $HOME/.config/scripts/launcher.sh &
+bindsym $mod+Shift+Delete exec $HOME/.config/scripts/powermenu.sh &
 
 # Activate pycom
 exec_always picom -f &

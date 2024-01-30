@@ -76,8 +76,8 @@ cat << "EOF"
 
 EOF
 
-pacman_packages=("base-devel" "xorg" "i3-wm" "sddm" "firefox" "discord" "kitty" "dunst" "picom" "polybar" "rofi" "zsh" "fastfetch" "nemo" "feh" "xclip" "playerctl" "flameshot" "os-prober" "ttf-jetbrains-mono-nerd" "bluez" "trash-cli" "man-db" "man-pages" "udisks2" "vim" "neovim" "materia-gtk-theme" "sl")
-aur_packages=("visual-studio-code-bin" "cmatrix-git" "sddm-sugar-candy-git" "i3lock-color")
+pacman_packages=("base-devel" "xorg" "i3-wm" "sddm" "firefox" "discord" "kitty" "dunst" "picom" "polybar" "rofi" "zsh" "fastfetch" "nemo" "feh" "xclip" "playerctl" "flameshot" "ttf-jetbrains-mono-nerd" "bluez" "trash-cli" "man-db" "man-pages" "udisks2" "vim" "neovim" "gnome-themes-extra" "sl")
+aur_packages=("visual-studio-code-bin" "cmatrix-git" "sddm-sugar-candy-git" "i3lock-color" "peaclock")
 
 mkdir $old_dotfiles &> /dev/null
 echo -e "Configuring pacman..."
