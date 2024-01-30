@@ -76,7 +76,7 @@ cat << "EOF"
 
 EOF
 
-pacman_packages=("base-devel" "xorg" "i3-wm" "sddm" "firefox" "discord" "kitty" "dunst" "picom" "polybar" "rofi" "zsh" "fastfetch" "nemo" "feh" "xclip" "playerctl" "flameshot" "ttf-jetbrains-mono-nerd" "bluez" "trash-cli" "man-db" "man-pages" "udiskie" "vim" "neovim" "gnome-themes-extra" "sl")
+pacman_packages=("base-devel" "xorg" "i3-wm" "sddm" "firefox" "discord" "kitty" "dunst" "picom" "polybar" "rofi" "zsh" "fastfetch" "nemo" "feh" "xclip" "playerctl" "flameshot" "ttf-jetbrains-mono-nerd" "bluez" "trash-cli" "man-db" "man-pages" "udiskie" "vim" "neovim" "gnome-themes-extra" "sl" "arandr" "autorandr")
 aur_packages=("visual-studio-code-bin" "cmatrix-git" "sddm-sugar-candy-git" "i3lock-color" "peaclock")
 
 mkdir $old_dotfiles &> /dev/null
