@@ -76,8 +76,14 @@ cat << "EOF"
 
 EOF
 
-pacman_packages=("base-devel" "xorg" "i3-wm" "sddm" "firefox" "discord" "kitty" "dunst" "picom" "polybar" "rofi" "zsh" "fastfetch" "nemo" "feh" "xclip" "playerctl" "flameshot" "ttf-jetbrains-mono-nerd" "bluez" "trash-cli" "man-db" "man-pages" "udiskie" "vim" "neovim" "gnome-themes-extra" "sl" "arandr" "autorandr")
-aur_packages=("visual-studio-code-bin" "cmatrix-git" "sddm-sugar-candy-git" "i3lock-color" "peaclock")
+pacman_packages=("base-devel" "xorg" "i3-wm" "sddm" "firefox" "discord" "kitty"
+	"dunst" "picom" "polybar" "rofi" "zsh" "fastfetch" "nemo" "feh" "xclip"
+	"playerctl" "flameshot" "ttf-jetbrains-mono-nerd" "bluez" "trash-cli"
+	"man-db" "man-pages" "udiskie" "vim" "neovim" "gnome-themes-extra" "sl"
+	"arandr" "autorandr")
+
+aur_packages=("visual-studio-code-bin" "cmatrix-git" "sddm-sugar-candy-git"
+	"i3lock-color" "peaclock")
 
 mkdir $old_dotfiles &> /dev/null
 echo -e "Configuring pacman..."
@@ -97,21 +103,21 @@ for pkg in "${pacman_packages[@]}"; do
 	fi
 done
 
-echo -e "Installing paru..."
-git clone https://aur.archlinux.org/paru.git $HOME/paru
+echo -e "Installing yay..."
+git clone https://aur.archlinux.org/yay.git $HOME/yay
 
-if (cd $HOME/paru && makepkg -si --noconfirm); then
-	echo "Installing the following packages with aur: ${aur_packages[*]}"
+if (cd $HOME/yay && makepkg -si --noconfirm); then
+	echo "Installing the following AUR packages with yay: ${aur_packages[*]}"
 	read -p "Press ENTER to continue..."
 	for pkg in "${aur_packages[@]}"; do
-		if ! paru -Qi "$pkg" &> /dev/null; then
-			paru -S "$pkg" --noconfirm
+		if ! yay -Qi "$pkg" &> /dev/null; then
+			yay -S "$pkg" --noconfirm
 		else
 			echo "$pkg already installed. Skipping..."
 		fi
 	done
 else
-	echo "Failed installing paru. Skipping AUR packages..."
+	echo "Failed installing yay. Skipping AUR packages..."
 fi
 
 cat << "EOF"
