@@ -1,34 +1,9 @@
 #!/bin/bash
 
-old_dotfiles="$HOME/.old-dotfiles"
+root=$(dirname $0)
+scripts_dir="$root/setup-scripts"
 
-function backup() {
-	mv -f $1 $old_dotfiles/$(basename $1) &> /dev/null
-}
-
-function sudo_backup() {
-	sudo mv -f $1 $old_dotfiles/$(basename $1) &> /dev/null
-}
-
-function place() {
-	backup $2
-	mkdir $(dirname $2) &> /dev/null
-	ln $1 $2 &> /dev/null
-}
-
-function sudo_place() {
-	sudo_backup $2
-	sudo mkdir $(dirname $2) &> /dev/null
-	sudo ln $1 $2 &> /dev/null
-}
-
-function place_dir() {
-	backup $2
-	mkdir $2 &> /dev/null
-	for file in $1/*; do
-		ln $file $2/$(basename $file) &> /dev/null
-	done
-}
+source $scripts_dir/utils.sh
 
 cat << "EOF"
 
@@ -46,15 +21,15 @@ cat << "EOF"
         |___/                                       
 
 
-This script will setup the Arch installation.
-It should be run from the root of the repository.
-All the replaced files will be placed on '~/.old-dotfiles/'.
-
 EOF
 
-read -p "Begin the installation? [Y/n]: " answer
-if [[ ! "$answer" =~ ^[Yy]$|^$ ]]; then
-	read -p "Exiting. Press ENTER to continue..."
+log "This script will setup the Arch installation."
+log "It should be run from the root of the repository."
+log "All the replaced files will be placed on '~/.old-dotfiles/'."
+echo
+
+if ! ask "Begin the installation?" "N"; then
+	wait_for_enter "Exiting."
 	exit 0
 fi
 cat << "EOF"
@@ -68,6 +43,8 @@ cat << "EOF"
        
 
 EOF
+
+exit 0
 
 pacman_packages=("base-devel" "xorg" "i3-wm" "sddm" "firefox" "discord" "kitty"
 	"dunst" "picom" "polybar" "rofi" "zsh" "fastfetch" "dolphin" "feh" "xclip"
