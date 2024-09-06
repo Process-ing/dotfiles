@@ -39,6 +39,6 @@ function ask() {
 }
 
 function wait_for_enter() {
-    echo -en "\033[96m[Script]\033[0m $1 Press ENTER to continue..."
+    echo -en "\033[96m[Script]\033[0m$([[ -n "$1" ]] && echo " $1") Press ENTER to continue..."
     read
 }

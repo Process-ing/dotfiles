@@ -32,6 +32,7 @@ if ! ask "Begin the installation?" "N"; then
 	wait_for_enter "Exiting."
 	exit 0
 fi
+
 cat << "EOF"
 
    ___           _                         
@@ -56,38 +57,39 @@ aur_packages=("visual-studio-code-bin" "cmatrix-git" "sddm-sugar-candy-git"
 	"i3lock-color" "peaclock")
 
 mkdir $old_dotfiles &> /dev/null
-echo -e "Configuring pacman..."
+log "Configuring pacman..."
 sudo_place ./config/pacman/pacman.conf /etc/pacman.conf
 
-echo "Updating the system..."
+log "Updating the system..."
 sudo pacman -Syu --noconfirm
 
-echo "Installing the following packages with pacman: ${pacman_packages[*]}"
-read -p "Press ENTER to continue..."
+log "Installing the following packages with pacman: ${pacman_packages[*]}"
+wait_for_enter
 
 for pkg in "${pacman_packages[@]}"; do
 	if ! pacman -Qi "$pkg" &> /dev/null; then
 		sudo pacman -S "$pkg" --noconfirm
 	else
-		echo "$pkg already installed. Skipping..."
+		log "$pkg already installed. Skipping..."
 	fi
 done
 
-echo -e "Installing yay..."
+log "Installing yay..."
 git clone https://aur.archlinux.org/yay.git $HOME/yay
 
 if (cd $HOME/yay && makepkg -si --noconfirm); then
-	echo "Installing the following AUR packages with yay: ${aur_packages[*]}"
-	read -p "Press ENTER to continue..."
+	log "Installing the following AUR packages with yay: ${aur_packages[*]}"
+	wait_for_enter
+
 	for pkg in "${aur_packages[@]}"; do
 		if ! yay -Qi "$pkg" &> /dev/null; then
 			yay -S "$pkg" --noconfirm
 		else
-			echo "$pkg already installed. Skipping..."
+			log "$pkg already installed. Skipping..."
 		fi
 	done
 else
-	echo "Failed installing yay. Skipping AUR packages..."
+	log "Failed installing yay. Skipping AUR packages..."
 fi
 
 cat << "EOF"
@@ -101,7 +103,8 @@ _\ \ | | |  __/ | |
 
 EOF
 
-echo -e "\nConfiguring zsh with Oh My Zsh and powerlevel10k..."
+log "\nConfiguring zsh with Oh My Zsh and powerlevel10k..."
+
 chsh -s $(which zsh)
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
@@ -110,7 +113,7 @@ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:
 place ./config/zsh/.zshrc $HOME/.zshrc
 place ./config/zsh/.p10k.zsh $HOME/.p10k.zsh
 
-echo "Configuring vim and neovim"
+log "Configuring vim and neovim"
 
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
@@ -130,28 +133,29 @@ cat << "EOF"
 
 EOF
 
-echo -e "\nConfiguring SDDM..."
+log "\nConfiguring SDDM..."
 
 sudo_place ./config/sddm/sddm.conf /etc/sddm.conf
 sudo_place ./config/sddm/sugar-candy/theme.conf /usr/share/sddm/themes/sugar-candy/theme.conf
 sudo_place ./config/sddm/sugar-candy/wallpaper.jpg /usr/share/sddm/themes/sugar-candy/wallpaper.jpg
 sudo systemctl enable sddm
 
-echo "Configuring fonts..."
+log "Configuring fonts..."
 
 mkdir $HOME/.local/share/ &> /dev/null
 mkdir $HOME/.local/share/fonts/ &> /dev/null
 cp -r ./config/fonts/MesloLGS $HOME/.local/share/fonts/
 fc-cache
 
-echo "Setting up scripts..."
+log "Setting up scripts..."
+
 mkdir $HOME/.config/scripts &> /dev/null
 for script in ./config/scripts/*; do
 	chmod +x $script
 	place $script "$HOME/.config/scripts/$(basename $script)"
 done
 
-echo "Setting up the remaining configuration files..."
+log "Setting up the remaining configuration files..."
 
 place ./config/dunst/dunstrc $HOME/.config/dunst/dunstrc
 place ./config/fastfetch/config.jsonc $HOME/.config/fastfetch/config.jsonc
@@ -168,7 +172,6 @@ place_dir ./config/rofi/ $HOME/.config/rofi/
 place_dir ./config/wallpapers $HOME/.config/wallpapers
 
 echo
-read -p "Installation completed. Reboot now? [Y/n]: " answer
-if [[ "$answer" =~ ^[Yy]$|^$ ]]; then
+if ask -p "Installation completed. Reboot now?" "Y"; then
 	sudo reboot
 fi
