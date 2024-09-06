@@ -4,6 +4,10 @@ root=$(dirname $0)
 scripts_dir="$root/setup-scripts"
 
 source $scripts_dir/utils.sh
+source $scripts_dir/nvidia.sh
+source $scripts_dir/packages.sh
+source $scripts_dir/shell.sh
+source $scripts_dir/config.sh
 
 
 cat << "EOF"
@@ -43,7 +47,7 @@ cat << "EOF"
 / ___/| | |  __/_____/\/ /_ | | | \__ \ || (_| | | |
 \/    |_|  \___|     \____/ |_| |_|___/\__\__,_|_|_|
                                                     
-													
+
 
 EOF
 
@@ -69,10 +73,12 @@ official_packages=("base-devel" "xorg" "i3-wm" "sddm" "firefox" "discord"
 	"kitty" "dunst" "picom" "polybar" "rofi" "zsh" "fastfetch" "dolphin" "feh"
 	"xclip" "playerctl" "flameshot" "ttf-jetbrains-mono-nerd" "bluez"
 	"trash-cli" "man-db" "man-pages" "udiskie" "vim" "neovim"
-	"gnome-themes-extra" "sl" "arandr" "autorandr")
+	"gnome-themes-extra" "sl" "arandr" "autorandr" "linux-lts" "linux-headers"
+	"linux-lts-headers" "pipewire" "pipewire-pulse" "pipewire-alsa"
+	"pipewire-jack")
 
 aur_packages=("visual-studio-code-bin" "cmatrix-git" "sddm-sugar-candy-git"
-	"i3lock-color" "peaclock")
+	"i3lock-color" "peaclock" "pwvu-control")
 
 log "Configuring pacman..."
 sudo_place ./config/pacman/pacman.conf /etc/pacman.conf
@@ -87,6 +93,22 @@ if install_yay; then
 	install_aur "${aur_packages[@]}"
 else
 	log "Failed installing yay. Skipping AUR packages..." "Err"
+fi
+
+
+cat << "EOF"
+
+     __        _____  ___ _____  _   
+  /\ \ \/\   /\\_   \/   \\_   \/_\  
+ /  \/ /\ \ / / / /\/ /\ / / /\//_\\ 
+/ /\  /  \ V /\/ /_/ /_//\/ /_/  _  \
+\_\ \/    \_/\____/___,'\____/\_/ \_/
+                                     
+
+EOF
+
+if ask "Setup NVIDIA drivers?" "Y"; then
+	setup_nvidia
 fi
 
 
