@@ -72,10 +72,10 @@ exit 0
 official_packages=("base-devel" "xorg" "i3-wm" "sddm" "firefox" "discord"
 	"kitty" "dunst" "picom" "polybar" "rofi" "zsh" "fastfetch" "dolphin" "feh"
 	"xclip" "playerctl" "flameshot" "ttf-jetbrains-mono-nerd" "bluez"
-	"trash-cli" "man-db" "man-pages" "udiskie" "vim" "neovim"
+	"trash-cli" "man-db" "man-pages" "udiskie" "vim" "neovim" "chromium"
 	"gnome-themes-extra" "sl" "arandr" "autorandr" "linux-lts" "linux-headers"
 	"linux-lts-headers" "pipewire" "pipewire-pulse" "pipewire-alsa"
-	"pipewire-jack")
+	"pipewire-jack" "btop" "powertop")
 
 aur_packages=("visual-studio-code-bin" "cmatrix-git" "sddm-sugar-candy-git"
 	"i3lock-color" "peaclock" "pwvu-control")
@@ -109,6 +109,9 @@ EOF
 
 if ask "Setup NVIDIA drivers?" "Y"; then
 	setup_nvidia
+	if ask "Setup Optimus Manager (for deactivating NVIDIA card on laptops)?" "Y"; then
+		setup_optimus
+	fi
 fi
 
 
@@ -130,6 +133,9 @@ flavor_shell
 log "Configuring vim and neovim"
 flavor_vim
 
+if ask "Setup Emacs with Doom?" "Y"; then
+	setup_doom
+fi
 
 cat << "EOF"
 

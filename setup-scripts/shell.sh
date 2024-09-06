@@ -17,3 +17,13 @@ function flavor_vim() {
     place_dir ./config/nvim/ $HOME/.config/nvim/
     vim -es -u ~/.vimrc -i NONE -c "PlugInstall" -c "qa"
 }
+
+function setup_doom() {
+    log "Installing emacs..."
+    install_official emacs
+
+    log "Installing doom-emacs..."
+    git clone --depth 1 https://github.com/doomemacs/doomemacs ~/.config/emacs
+    echo -e '# Add Doom Emacs command to the path\nexport PATH="$HOME/.config/emacs/bin:$PATH"' >> $HOME/.zshrc
+    ~/.config/emacs/bin/doom install
+}

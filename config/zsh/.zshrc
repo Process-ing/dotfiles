@@ -9,7 +9,7 @@
 # _-_-_-_-_-_-_-_-_-_-_-_-_
 
 
-# Execute Neofetch
+# Execute Fastfetch
 fastfetch
 
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
@@ -136,7 +136,7 @@ alias reset-screens="$HOME/.config/scripts/reset-screens.sh"
 
 # Custom path variables
 export PATH="$PATH:$HOME/flutter/bin"
-export CHROME_EXECUTABLE="/usr/bin/google-chrome-stable"
+export CHROME_EXECUTABLE="/usr/bin/chromium"
 
 # Set vim as default text editor
 export EDITOR=vim
