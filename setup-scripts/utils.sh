@@ -1,3 +1,5 @@
+#!/bin/bash
+
 old_dotfiles="$HOME/.old-dotfiles"
 
 function backup() {
@@ -29,11 +31,17 @@ function place_dir() {
 }
 
 function log() {
-    echo -e "\033[96m[Script]\033[0m $1"
+    case $2 in
+        "Warn") prefix="\033[93m[Script]\033[0m";;
+        "Err") prefix="\033[91m[Script]\033[0m";;
+        *) prefix="\033[96m[Script]\033[0m";;
+    esac
+
+    echo -e "$prefix $1"
 }
 
 function ask() {
-    echo -en "\033[96m[Script]\033[0m $1 $([[ $2 = "Y" ]] && echo "[Y/n]" || echo "[y/N]"): "
+    echo -en "\033[92m[Script]\033[0m $1 $([[ $2 = "Y" ]] && echo "[Y/n]" || echo "[y/N]"): "
     read answer
     if [[ ("$answer" =~ ^[Yy]$) || ($2 = "Y" && "$answer" =~ ^$) ]]; then return 0; else return 1; fi
 }
