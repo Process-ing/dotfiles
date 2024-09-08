@@ -1,11 +1,17 @@
 #!/bin/bash
 
+OLD_DOTFILES="$HOME/.old-dotfiles"
+
+function setup_old_dotfiles() {
+	mkdir $OLD_DOTFILES &> /dev/null
+}
+
 function backup() {
-	mv -f $1 $old_dotfiles/$(basename $1) &> /dev/null
+	mv -f $1 $OLD_DOTFILES/$(basename $1) &> /dev/null
 }
 
 function sudo_backup() {
-	sudo mv -f $1 $old_dotfiles/$(basename $1) &> /dev/null
+	sudo mv -f $1 $OLD_DOTFILES/$(basename $1) &> /dev/null
 }
 
 function place() {

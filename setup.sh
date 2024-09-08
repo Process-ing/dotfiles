@@ -1,13 +1,10 @@
 #!/bin/bash
 
-ROOT=$(dirname $0)
-OLD_DOTFILES="$HOME/.old-dotfiles"
-
-source $ROOT/setup-scripts/utils.sh
-source $ROOT/setup-scripts/nvidia.sh
-source $ROOT/setup-scripts/packages.sh
-source $ROOT/setup-scripts/shell.sh
-source $ROOT/setup-scripts/config.sh
+source ./setup-scripts/utils.sh
+source ./setup-scripts/nvidia.sh
+source ./setup-scripts/packages.sh
+source ./setup-scripts/shell.sh
+source ./setup-scripts/config.sh
 
 
 cat << "EOF"
@@ -52,8 +49,7 @@ cat << "EOF"
 EOF
 
 log "Creating old dotfiles directory..."
-mkdir $OLD_DOTFILES &> /dev/null
-
+setup_old_dotfiles
 
 cat << "EOF"
 
@@ -79,7 +75,7 @@ aur_packages=("visual-studio-code-bin" "cmatrix-git" "sddm-sugar-candy-git"
 	"i3lock-color" "peaclock")
 
 log "Configuring pacman..."
-sudo_place $ROOT/config/pacman/pacman.conf /etc/pacman.conf
+sudo_place ./config/pacman/pacman.conf /etc/pacman.conf
 
 log "Updating the system..."
 sudo pacman -Syu --noconfirm
@@ -173,6 +169,6 @@ cat << "EOF"
 EOF
 
 echo
-if ask -p "Installation completed. Reboot now?" "Y"; then
+if ask "Installation completed. Reboot now?" "Y"; then
 	sudo reboot
 fi
