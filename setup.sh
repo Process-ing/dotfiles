@@ -70,15 +70,15 @@ EOF
 exit 0
 
 official_packages=("base-devel" "xorg" "i3-wm" "sddm" "firefox" "discord"
-	"kitty" "dunst" "picom" "polybar" "rofi" "zsh" "fastfetch" "dolphin" "feh"
+	"kitty" "dunst" "picom" "polybar" "rofi" "zsh" "fastfetch" "nemo" "feh"
 	"xclip" "playerctl" "flameshot" "ttf-jetbrains-mono-nerd" "bluez"
 	"trash-cli" "man-db" "man-pages" "udiskie" "vim" "neovim" "chromium"
 	"gnome-themes-extra" "sl" "arandr" "autorandr" "linux-lts" "linux-headers"
 	"linux-lts-headers" "pipewire" "pipewire-pulse" "pipewire-alsa"
-	"pipewire-jack" "btop" "powertop")
+	"pipewire-jack" "btop" "powertop" "pavucontrol")
 
 aur_packages=("visual-studio-code-bin" "cmatrix-git" "sddm-sugar-candy-git"
-	"i3lock-color" "peaclock" "pwvu-control")
+	"i3lock-color" "peaclock")
 
 log "Configuring pacman..."
 sudo_place ./config/pacman/pacman.conf /etc/pacman.conf

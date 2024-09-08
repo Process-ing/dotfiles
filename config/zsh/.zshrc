@@ -141,7 +141,7 @@ export CHROME_EXECUTABLE="/usr/bin/chromium"
 # Set vim as default text editor
 export EDITOR=vim
 
-# ssh-agent
+# Start ssh-agent, with only one process at a time
 if ! pgrep -u "$USER" ssh-agent > /dev/null; then
     ssh-agent -t 1h > "$XDG_RUNTIME_DIR/ssh-agent.env"
 fi
