@@ -1,13 +1,13 @@
 #!/bin/bash
 
-root=$(dirname $0)
-scripts_dir="$root/setup-scripts"
+ROOT=$(dirname $0)
+OLD_DOTFILES="$HOME/.old-dotfiles"
 
-source $scripts_dir/utils.sh
-source $scripts_dir/nvidia.sh
-source $scripts_dir/packages.sh
-source $scripts_dir/shell.sh
-source $scripts_dir/config.sh
+source $ROOT/setup-scripts/utils.sh
+source $ROOT/setup-scripts/nvidia.sh
+source $ROOT/setup-scripts/packages.sh
+source $ROOT/setup-scripts/shell.sh
+source $ROOT/setup-scripts/config.sh
 
 
 cat << "EOF"
@@ -52,7 +52,7 @@ cat << "EOF"
 EOF
 
 log "Creating old dotfiles directory..."
-mkdir $old_dotfiles &> /dev/null
+mkdir $OLD_DOTFILES &> /dev/null
 
 
 cat << "EOF"
@@ -67,8 +67,6 @@ cat << "EOF"
 
 EOF
 
-exit 0
-
 official_packages=("base-devel" "xorg" "i3-wm" "sddm" "firefox" "discord"
 	"kitty" "dunst" "picom" "polybar" "rofi" "zsh" "fastfetch" "nemo" "feh"
 	"xclip" "playerctl" "flameshot" "ttf-jetbrains-mono-nerd" "bluez"
@@ -81,7 +79,7 @@ aur_packages=("visual-studio-code-bin" "cmatrix-git" "sddm-sugar-candy-git"
 	"i3lock-color" "peaclock")
 
 log "Configuring pacman..."
-sudo_place ./config/pacman/pacman.conf /etc/pacman.conf
+sudo_place $ROOT/config/pacman/pacman.conf /etc/pacman.conf
 
 log "Updating the system..."
 sudo pacman -Syu --noconfirm

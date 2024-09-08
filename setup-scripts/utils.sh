@@ -1,7 +1,5 @@
 #!/bin/bash
 
-old_dotfiles="$HOME/.old-dotfiles"
-
 function backup() {
 	mv -f $1 $old_dotfiles/$(basename $1) &> /dev/null
 }
