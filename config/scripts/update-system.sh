@@ -1,3 +1,3 @@
 #!/bin/bash
 
-kitty "yay; read -p 'Press ENTER to continue...'"
+kitty sh -c "fastfetch; yay; read -p 'Press ENTER to continue...'"

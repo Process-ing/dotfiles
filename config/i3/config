@@ -202,9 +202,9 @@ default_border pixel 0
 default_floating_border pixel 0
 gaps inner 15
 
-# Android Studio
-for_window [title="^Android Emulator - Pixel_3a_API_34_extension_level_7_x86_64.*"] floating enable 
+# Floating windows
+for_window [title="^Android Emulator - Pixel_3a_API_34_extension_level_7_x86_64.*"] floating enable  # Android Emulator
+for_window [title="^AWTTerminalFrame$"] floating enable  # IntelliJ and Lanterna 
+for_window [title="^Volume Control$"] floating enable  # pavucontrol
 
-# IntelliJ and Lanterna
-for_window [title="^AWTTerminalFrame$"] floating enable
 

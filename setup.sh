@@ -1,10 +1,12 @@
 #!/bin/bash
 
-source ./setup-scripts/utils.sh
-source ./setup-scripts/nvidia.sh
-source ./setup-scripts/packages.sh
-source ./setup-scripts/shell.sh
-source ./setup-scripts/config.sh
+ROOT=$(dirname $0)
+
+source $ROOT/setup-scripts/utils.sh
+source $ROOT/setup-scripts/nvidia.sh
+source $ROOT/setup-scripts/packages.sh
+source $ROOT/setup-scripts/shell.sh
+source $ROOT/setup-scripts/config.sh
 
 
 cat << "EOF"
@@ -69,13 +71,14 @@ official_packages=("base-devel" "xorg" "i3-wm" "sddm" "firefox" "discord"
 	"trash-cli" "man-db" "man-pages" "udiskie" "vim" "neovim" "chromium"
 	"gnome-themes-extra" "sl" "arandr" "autorandr" "linux-lts" "linux-headers"
 	"linux-lts-headers" "pipewire" "pipewire-pulse" "pipewire-alsa"
-	"pipewire-jack" "btop" "powertop" "pavucontrol")
+	"pipewire-jack" "btop" "powertop" "pavucontrol" "brightnessctl" "tlp"
+   "xorg-xinit")
 
 aur_packages=("visual-studio-code-bin" "cmatrix-git" "sddm-sugar-candy-git"
 	"i3lock-color" "peaclock")
 
 log "Configuring pacman..."
-sudo_place ./config/pacman/pacman.conf /etc/pacman.conf
+sudo_place $ROOT/config/pacman/pacman.conf /etc/pacman.conf
 
 log "Updating the system..."
 sudo pacman -Syu --noconfirm
@@ -151,6 +154,13 @@ config_fonts
 
 log "Setting up scripts..."
 place_scripts
+
+log "Configuring TLP for power saving..."
+config_tlp
+
+if ask "Set natural scrolling for touchpad?" "Y"; then
+   config_touchpad
+fi
 
 log "Setting up the remaining configuration files..."
 config_misc

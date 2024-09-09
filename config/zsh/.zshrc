@@ -135,7 +135,7 @@ alias kys="systemctl suspend"
 alias reset-screens="$HOME/.config/scripts/reset-screens.sh"
 
 # Custom path variables
-export PATH="$PATH:$HOME/flutter/bin"
+export PATH="$PATH:$HOME/flutter/bin:$HOME/.config/emacs/bin"
 export CHROME_EXECUTABLE="/usr/bin/chromium"
 
 # Set vim as default text editor
