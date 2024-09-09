@@ -24,5 +24,5 @@ function setup_doom() {
 
     log "Installing doom-emacs..."
     git clone --depth 1 https://github.com/doomemacs/doomemacs ~/.config/emacs
-    ~/.config/emacs/bin/doom install --force --fonts
+    ~/.config/emacs/bin/doom install --force
 }

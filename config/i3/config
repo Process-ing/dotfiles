@@ -189,7 +189,7 @@ bindsym $mod+Shift+Delete exec $HOME/.config/scripts/powermenu.sh &
 bindsym XF86PowerOff exec $HOME/.config/scripts/powermenu.sh &
 
 # Launch btop
-bindsym $mod+Shift+Escape kitty "btop" &
+bindsym $mod+Shift+Escape exec kitty "btop" &
 
 # Activate pycom
 exec picom -f &
