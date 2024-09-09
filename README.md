@@ -22,15 +22,21 @@
  - **GTK Theme:** [`Adwaita/Adwaita-dark`](https://gnome.pages.gitlab.gnome.org/libadwaita/)
  - **Primary Fonts**: [`JetBrainsMono Nerd Font`](https://www.nerdfonts.com/#home), [`MesloLGS Nerd Font`](https://www.nerdfonts.com/#home)
  - **Browser:** [`Firefox`](https://www.mozilla.org/pt-PT/firefox/browsers/)
- - **Text Editors:** [`vim`](https://www.vim.org/), [`neovim`](https://neovim.io/), [`VSCode`](https://code.visualstudio.com/)
+ - **Text Editors:** [`vim`](https://www.vim.org/), [`neovim`](https://neovim.io/), [`VSCode`](https://code.visualstudio.com/), [`GNU Emacs`](https://www.gnu.org/software/emacs/emacs.html) with [`Doom`](https://github.com/doomemacs/doomemacs)
  - **File Manager** [`nemo`](https://github.com/linuxmint/nemo)
  - **Notification Daemon:** [`dunst`](https://dunst-project.org/)
  - **Image Viewer:** [`feh`](https://feh.finalrewind.org/)
  - **System Monitor:** [`btop`](https://github.com/aristocratos/btop)
+ - **Power Management:** [`TLP`](https://linrunner.de/tlp/), [`PowerTOP`](https://github.com/fenrus75/powertop)
  - **Others:** [`cmatrix`](https://www.asty.org/cmatrix/), [`peaclock`](https://github.com/octobanana/peaclock), [`cava`](https://github.com/karlstav/cava)
 
 ### 📜 Installation Script
 
-To easily setup the dotfiles, clone the repository and run the script [`setup.sh`](setup.sh) in the root of the repository folder. It is meant to be executed after a fresh, minimal installation of Arch Linux.
+To easily setup the dotfiles, clone the repository and run the script [`setup.sh`](setup.sh). It is meant to be executed after a fresh, minimal installation of Arch Linux.
+
+```bash
+git clone --depth 1 https://github.com/Process-ing/dotfiles ~/dotfiles
+~/dotfiles/setup.sh
+```
 
 **NOTE:** Some configurations are adjusted to my personal computer (network devices, resolution, ...), make sure to adjust them to your own needs. Also, the dotfiles don't work well in VMs (one reason being `picom` because it uses `glx` as the backend, just change to `xrender` in `picom.conf`)
