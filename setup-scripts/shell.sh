@@ -22,10 +22,6 @@ function setup_doom() {
     log "Installing emacs and other packages..."
     install_official emacs-nativecomp shellcheck fd ripgrep discount
 
-    log "Installing nerd icons..."
-    cp $ROOT/config/fonts/NFM.ttf $HOME/.local/share/fonts/
-    fc-cache
-
     log "Installing doom-emacs..."
     git clone --depth 1 https://github.com/doomemacs/doomemacs ~/.config/emacs
     ~/.config/emacs/bin/doom install --force --fonts

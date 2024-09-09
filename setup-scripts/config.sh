@@ -12,6 +12,7 @@ function config_fonts() {
     mkdir $HOME/.local/share/ &> /dev/null
     mkdir $HOME/.local/share/fonts/ &> /dev/null
     cp -r $ROOT/config/fonts/MesloLGS $HOME/.local/share/fonts/
+    cp $ROOT/config/fonts/NFM.ttf $HOME/.local/share/fonts/
     fc-cache
 }
 
@@ -23,7 +24,8 @@ function place_scripts() {
     done
 }
 
-function config_tlp() {
+function config_power_management() {
+    sudo sed -i 's/^#HandlePowerKey=.*/HandlePowerKey=ignore/' /etc/systemd/logind.conf
     sudo systemctl enable tlp
 }
 

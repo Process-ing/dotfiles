@@ -158,8 +158,8 @@ config_fonts
 log "Setting up scripts..."
 place_scripts
 
-log "Configuring TLP for power saving..."
-config_tlp
+log "Configuring power management settings..."
+config_power_management
 
 if ask "Set natural scrolling for touchpad?" "Y"; then
    config_touchpad
