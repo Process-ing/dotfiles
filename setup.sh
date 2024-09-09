@@ -65,17 +65,20 @@ cat << "EOF"
 
 EOF
 
-official_packages=("base-devel" "xorg" "i3-wm" "sddm" "firefox" "discord"
-	"kitty" "dunst" "picom" "polybar" "rofi" "zsh" "fastfetch" "nemo" "feh"
-	"xclip" "playerctl" "flameshot" "ttf-jetbrains-mono-nerd" "bluez"
-	"trash-cli" "man-db" "man-pages" "udiskie" "vim" "neovim" "chromium"
-	"gnome-themes-extra" "sl" "arandr" "autorandr" "linux-lts" "linux-headers"
-	"linux-lts-headers" "pipewire" "pipewire-pulse" "pipewire-alsa"
-	"pipewire-jack" "btop" "powertop" "pavucontrol" "brightnessctl" "tlp"
-   "xorg-xinit")
+official_packages=("base-devel"                                                    # AUR helper
+    "linux-lts" "linux-headers" "linux-lts-headers"                                # Kernel
+    "xorg" "xorg-xinit" "i3-wm"                                                    # Xorg adn i3
+    "networkmanager"                                                               # Network
+    "firefox" "chromium" "discord" "nemo" "feh" "vim" "neovim"                     # Apps
+	"kitty" "dunst" "picom" "polybar" "rofi" "zsh" "fastfetch"                     # Terminal and status bar
+    "pipewire" "pipewire-pulse" "pipewire-alsa" "pipewire-jack" "pavucontrol"      # Audio
+	"sl" "xclip" "playerctl" "flameshot" "bluez" "trash-cli" "man-db" "man-pages"
+    "udiskie" "arandr" "autorandr" "btop" "powertop" "tlp" "brightnessctl"         # Utilities            
+    "sddm" "qt5-graphicaleffects" "qt5-quickcontrols2" "qt5-svg"                   # Login manager
+    "gnome-themes-extra" "ttf-jetbrains-mono-nerd"                                 # Themes and fonts
+)
 
-aur_packages=("visual-studio-code-bin" "cmatrix-git" "sddm-sugar-candy-git"
-	"i3lock-color" "peaclock")
+aur_packages=("visual-studio-code-bin" "cmatrix-git" "i3lock-color" "peaclock")
 
 log "Configuring pacman..."
 sudo_place $ROOT/config/pacman/pacman.conf /etc/pacman.conf
