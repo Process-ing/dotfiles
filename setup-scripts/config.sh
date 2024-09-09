@@ -1,7 +1,7 @@
 #!/bin/bash
 
 function config_sddm() {
-    sudo tar ‑xzvf $HOME/config/sugar‑candy.tar.gz ‑C /usr/share/sddm/themes
+    sudo tar -xzvf $ROOT/config/sddm/sugar-candy/sugar-candy.tar.gz -C /usr/share/sddm/themes
     sudo_place $ROOT/config/sddm/sddm.conf /etc/sddm.conf
     sudo_place $ROOT/config/sddm/sugar-candy/theme.conf /usr/share/sddm/themes/sugar-candy/theme.conf
     sudo_place $ROOT/config/sddm/sugar-candy/wallpaper.jpg /usr/share/sddm/themes/sugar-candy/wallpaper.jpg

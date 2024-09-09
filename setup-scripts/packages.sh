@@ -15,7 +15,7 @@ function install_official() {
 
 function install_yay() {
     git clone https://aur.archlinux.org/yay.git $HOME/yay
-    cd $HOME/yay && makepkg -si --noconfirm
+    (cd $HOME/yay && makepkg -si --noconfirm)
     return $?
 }
 
