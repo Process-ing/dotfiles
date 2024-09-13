@@ -167,8 +167,8 @@ bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 
 # Key binfing for screen brightness control
-bindsym XF86MonBrightnessUp exec brightnessctl --device=intel_backlight set +2%    # Change "intel_backlight" to your preferred device
-bindsym XF86MonBrightnessDown exec brightnessctl --device=intel_backlight set 2%-
+bindsym XF86MonBrightnessUp exec brightnessctl --device=intel_backlight set +5%    # Change "intel_backlight" to your preferred device
+bindsym XF86MonBrightnessDown exec brightnessctl --device=intel_backlight set 5%-
 
 # Key binding for screenshot (using Flameshot)
 bindsym Print exec flameshot gui &
@@ -197,8 +197,7 @@ exec picom -f &
 # Launch authentication agent
 exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 
-# Mount Windows partition and enable automounting
-exec udisksctl mount -b /dev/nvme0n1p3 &           # Change "/dev/nvme0n1p3" to your Windows partition
+# Enable automounting
 exec udiskie &
 
 # Window styling
