@@ -2,10 +2,10 @@
 
 function setup_nvidia() {
     log "Installing NVIDIA drivers..."
-    install_official nvidia nvidia-lts
+    install_official nvidia-dkms
 
     log "Setting up NVIDIA modules..."
-    sudo sed -i '/^MODULES=/s/)/ nvidia nvidia_modeset nvidia_uvm nvidia_drm)/' /etc/mkinitcpio.conf
+    sudo sed -i '/^MODULES=([a-z]/s/)/ nvidia nvidia_modeset nvidia_uvm nvidia_drm)/; /^MODULES=()/s/)/nvidia nvidia_modeset nvidia_uvm nvidia_drm)/' /etc/mkinitcpio.conf
     sudo mkinitcpio -P
 }
 
