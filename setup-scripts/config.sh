@@ -29,6 +29,10 @@ function config_power_management() {
     sudo systemctl enable tlp
 }
 
+function config_hibernation() {
+    sudo sed -i '/^HOOKS=/s/fsck/resume fsck/' /etc/mkinitcpio.conf
+}
+
 function config_touchpad() {
     sudo_place $ROOT/config/X11/30-touchpad.conf /etc/X11/xorg.conf.d/30-touchpad.conf
 }

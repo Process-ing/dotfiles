@@ -164,6 +164,9 @@ place_scripts
 log "Configuring power management settings..."
 config_power_management
 
+log "Configuring hibernation..."
+config_hibernation
+
 if ask "Set natural scrolling for touchpad?" "Y"; then
    config_touchpad
 fi
