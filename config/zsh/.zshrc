@@ -134,13 +134,6 @@ alias kys="systemctl suspend"
 # Commands for screen reseting
 alias reset-screens="$HOME/.config/scripts/reset-screens.sh"
 
-# Custom path variables
-export PATH="$PATH:$HOME/flutter/bin:$HOME/.config/emacs/bin"
-export CHROME_EXECUTABLE="/usr/bin/chromium"
-
-# Set vim as default text editor
-export EDITOR=vim
-
 # Start ssh-agent, with only one process at a time
 if ! pgrep -u "$USER" ssh-agent > /dev/null; then
     ssh-agent -t 1h > "$XDG_RUNTIME_DIR/ssh-agent.env"

@@ -7,6 +7,7 @@ function flavor_shell() {
     git clone https://github.com/zsh-users/zsh-autosuggestions.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
     git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
     place $ROOT/config/zsh/.zshrc $HOME/.zshrc
+    place $ROOT/config/zsh/.zshenv $HOME/.zshenv
     place $ROOT/config/zsh/.p10k.zsh $HOME/.p10k.zsh
 }
 

@@ -16,8 +16,8 @@ set $mod Mod4
 font pango: JetBrainsMono NF Regular 12
 
 # Use pactl to adjust volume in PulseAudio
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +2% && $refresh_i3status
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -2% && $refresh_i3status
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% && $refresh_i3status
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5% && $refresh_i3status
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
 
@@ -194,6 +194,9 @@ bindsym $mod+Shift+Escape exec kitty "btop" &
 # Activate pycom
 exec picom -f &
 
+# Launch authentication agent
+exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
+
 # Mount Windows partition and enable automounting
 exec udisksctl mount -b /dev/nvme0n1p3 &           # Change "/dev/nvme0n1p3" to your Windows partition
 exec udiskie &
@@ -207,8 +210,8 @@ default_floating_border pixel 0
 gaps inner 15
 
 # Floating windows
-for_window [title="^Android Emulator - Pixel_3a_API_34_extension_level_7_x86_64.*"] floating enable  # Android Emulator
+for_window [title="^Android Emulator*"] floating enable  # Android Emulator
 for_window [title="^AWTTerminalFrame$"] floating enable  # IntelliJ and Lanterna 
-for_window [title="^Volume Control$"] floating enable  # pavucontrol
+for_window [title="^Volume Control$"] floating enable    # pavucontrol
 
 

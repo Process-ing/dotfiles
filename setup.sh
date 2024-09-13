@@ -69,16 +69,19 @@ official_packages=("base-devel"                                                 
     "linux-lts" "linux-headers" "linux-lts-headers"                                # Kernel
     "xorg" "xorg-xinit" "i3-wm"                                                    # Xorg adn i3
     "networkmanager"                                                               # Network
-    "firefox" "chromium" "discord" "nemo" "feh" "vim" "neovim"                     # Apps
-	"kitty" "dunst" "picom" "polybar" "rofi" "zsh" "fastfetch"                     # Terminal and status bar
+    "firefox" "discord" "nemo" "feh" "vim" "neovim"                                # Apps
+    "kitty" "dunst" "picom" "polybar" "rofi" "zsh" "fastfetch"                     # Terminal and status bar
     "pipewire" "pipewire-pulse" "pipewire-alsa" "pipewire-jack" "pavucontrol"      # Audio
-	"sl" "xclip" "playerctl" "flameshot" "bluez" "trash-cli" "man-db" "man-pages"
-    "udiskie" "arandr" "autorandr" "btop" "powertop" "tlp" "brightnessctl"         # Utilities            
+    "sl" "xclip" "playerctl" "flameshot" "bluez" "trash-cli" "man-db" "man-pages"
+    "udiskie" "arandr" "autorandr" "btop" "powertop" "tlp" "brightnessctl"
+    "polkit-gnome" "unzip"                                                         # Utilities            
     "sddm" "qt5-graphicaleffects" "qt5-quickcontrols2" "qt5-svg"                   # Login manager
-    "gnome-themes-extra" "ttf-jetbrains-mono-nerd"                                 # Themes and fonts
+    "gnome-themes-extra"                                                           # Themes
+    "ttf-jetbrains-mono-nerd" "ttf-droid"                                          # Fonts
 )
 
-aur_packages=("visual-studio-code-bin" "cmatrix-git" "i3lock-color" "peaclock")
+aur_packages=("visual-studio-code-bin" "cmatrix-git" "i3lock-color" "peaclock"
+    "adwaita-qt5-git" "adwaita-qt6-git")
 
 log "Configuring pacman..."
 sudo_place $ROOT/config/pacman/pacman.conf /etc/pacman.conf
