@@ -5,7 +5,7 @@ function setup_nvidia() {
     install_official nvidia-dkms
 
     log "Setting up NVIDIA modules..."
-    sudo sed -i '/^MODULES=/s/)/ nvidia nvidia_modeset nvidia_uvm nvidia_drm)/; /s/=( /=(/' /etc/mkinitcpio.conf 
+    sudo sed -i '/^MODULES=/s/)/ nvidia nvidia_modeset nvidia_uvm nvidia_drm)/; s/=( /=(/' /etc/mkinitcpio.conf 
     # Second script is to remove the first space if the array is initially empty
     sudo mkinitcpio -P
 }
