@@ -4,7 +4,7 @@
 
 NOTIFY_ICON=/usr/share/icons/Papirus/32x32/apps/system-software-update.svg
 
-get_total_updates() { UPDATES=$($HOME/.config/scripts/checkupdates 2>/dev/null | wc -l); }
+get_total_updates() { UPDATES=$(checkupdates-with-aur 2>/dev/null | wc -l); }
 
 while true; do
     get_total_updates
