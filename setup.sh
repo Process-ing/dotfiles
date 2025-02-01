@@ -174,6 +174,8 @@ fi
 log "Setting up the remaining configuration files..."
 config_misc
 
+log "Configuring permissions..."
+config_perms
 
 cat << "EOF"
 

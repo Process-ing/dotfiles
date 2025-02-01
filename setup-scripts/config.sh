@@ -52,3 +52,8 @@ function config_misc() {
     place_dir $ROOT/config/rofi/ $HOME/.config/rofi/
     place_dir $ROOT/config/wallpapers $HOME/.config/wallpapers/
 }
+
+function config_perms() {
+    sudo place /etc/polkit-1/rules.d/50-org.freedesktop.NetworkManager.rules $ROOT/config/polkit/50-org.freedesktop.NetworkManager.rules
+    sudo usermod -aG network $USER
+}
