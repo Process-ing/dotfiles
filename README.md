@@ -13,7 +13,7 @@
  - **Shell:** [`Zsh`](https://www.zsh.org/)
    - **Plugin Manager:** [`oh-my-zsh`](https://github.com/ohmyzsh/ohmyzsh)
    - **Plugins:** [`powerlevel10k`](https://github.com/romkatv/powerlevel10k), [`zsh-autosuggestions`](https://github.com/zsh-users/zsh-autosuggestions), [`zsh-syntax-highlighting`](https://github.com/zsh-users/zsh-syntax-highlighting)
- - **System Information Tool:** [`fastfetch`]()
+ - **System Information Tool:** [`fastfetch`](https://github.com/fastfetch-cli/fastfetch)
  - **Compositor:** [`picom`](https://github.com/yshui/picom)
  - **Status Bar:** [`polybar`](https://github.com/polybar/polybar)
  - **Launcher:** [`rofi`](https://github.com/davatorium/rofi)
