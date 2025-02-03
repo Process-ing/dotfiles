@@ -182,6 +182,7 @@ exec_always $HOME/.config/scripts/reset-screens.sh &
 # Screen orientation control
 bindsym $mod+p exec $HOME/.config/scripts/reset-screens.sh portable-horizontal &
 bindsym $mod+F7 exec $HOME/.config/scripts/reset-screens.sh portable-vertical &
+bindsym $mod+Shift+I exec $HOME/.config/scripts/reset-screens.sh laptop-inverted &
 
 # Launch rofi
 bindsym $mod+Shift+Return exec $HOME/.config/scripts/launcher.sh &
@@ -209,8 +210,9 @@ default_floating_border pixel 0
 gaps inner 15
 
 # Floating windows
-for_window [title="^Android Emulator*"] floating enable  # Android Emulator
-for_window [title="^AWTTerminalFrame$"] floating enable  # IntelliJ and Lanterna 
-for_window [title="^Volume Control$"] floating enable    # pavucontrol
+for_window [title="^Android Emulator*"] floating enable    # Android Emulator
+for_window [title="^AWTTerminalFrame$"] floating enable    # IntelliJ and Lanterna 
+for_window [title="^Volume Control$"] floating enable      # pavucontrol
+for_window [title="^Network Connections$"] floating enable # nm-connection-editor
 
 
