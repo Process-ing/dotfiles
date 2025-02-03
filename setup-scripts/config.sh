@@ -54,6 +54,6 @@ function config_misc() {
 }
 
 function config_perms() {
-    sudo place /etc/polkit-1/rules.d/50-org.freedesktop.NetworkManager.rules $ROOT/config/polkit/50-org.freedesktop.NetworkManager.rules
+    sudo_place /etc/polkit-1/rules.d/50-org.freedesktop.NetworkManager.rules $ROOT/config/polkit/50-org.freedesktop.NetworkManager.rules
     sudo usermod -aG network $USER
 }
