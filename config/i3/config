@@ -182,7 +182,8 @@ exec_always $HOME/.config/scripts/reset-screens.sh &
 # Screen orientation control
 bindsym $mod+p exec $HOME/.config/scripts/reset-screens.sh portable-horizontal &
 bindsym $mod+F7 exec $HOME/.config/scripts/reset-screens.sh portable-vertical &
-bindsym $mod+Shift+I exec $HOME/.config/scripts/reset-screens.sh laptop-inverted &
+bindsym $mod+i exec $HOME/.config/scripts/reset-screens.sh laptop &
+bindsym $mod+Shift+i exec $HOME/.config/scripts/reset-screens.sh laptop-inverted &
 
 # Launch rofi
 bindsym $mod+Shift+Return exec $HOME/.config/scripts/launcher.sh &
