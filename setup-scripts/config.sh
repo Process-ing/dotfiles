@@ -5,7 +5,7 @@ function config_sddm() {
     sudo_place $ROOT/config/sddm/sddm.conf /etc/sddm.conf
     sudo_place $ROOT/config/sddm/sugar-candy/theme.conf /usr/share/sddm/themes/sugar-candy/theme.conf
     sudo_place $ROOT/config/sddm/sugar-candy/wallpaper.jpg /usr/share/sddm/themes/sugar-candy/wallpaper.jpg
-    sudo systemctl enable sddm
+    sudo systemctl enable sddm.service
 }
 
 function config_fonts() {
@@ -26,7 +26,7 @@ function place_scripts() {
 
 function config_power_management() {
     sudo sed -i 's/^#HandlePowerKey=.*/HandlePowerKey=ignore/' /etc/systemd/logind.conf
-    sudo systemctl enable tlp
+    sudo systemctl enable tlp.service
 }
 
 function config_hibernation() {
@@ -35,6 +35,15 @@ function config_hibernation() {
 
 function config_touchpad() {
     sudo_place $ROOT/config/X11/30-touchpad.conf /etc/X11/xorg.conf.d/30-touchpad.conf
+}
+
+function config_perms() {
+    sudo cp /etc/polkit-1/rules.d/50-org.freedesktop.NetworkManager.rules $ROOT/config/polkit/50-org.freedesktop.NetworkManager.rules
+    sudo usermod -aG network $USER
+}
+
+function config_cron() {
+    sudo systemctl enable cronie.service
 }
 
 function config_misc() {
@@ -51,9 +60,4 @@ function config_misc() {
     place_dir $ROOT/config/polybar/ $HOME/.config/polybar/
     place_dir $ROOT/config/rofi/ $HOME/.config/rofi/
     place_dir $ROOT/config/wallpapers $HOME/.config/wallpapers/
-}
-
-function config_perms() {
-    sudo cp /etc/polkit-1/rules.d/50-org.freedesktop.NetworkManager.rules $ROOT/config/polkit/50-org.freedesktop.NetworkManager.rules
-    sudo usermod -aG network $USER
 }

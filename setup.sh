@@ -74,7 +74,7 @@ official_packages=("base-devel"                                                 
     "pipewire" "pipewire-pulse" "pipewire-alsa" "pipewire-jack" "pavucontrol"      # Audio
     "sl" "xclip" "playerctl" "flameshot" "bluez" "trash-cli" "man-db" "man-pages"
     "udiskie" "arandr" "autorandr" "btop" "powertop" "tlp" "brightnessctl"
-    "polkit-gnome" "unzip"                                                         # Utilities            
+    "polkit-gnome" "unzip" "rsync" "cronie"                                        # Utilities            
     "sddm" "qt5-graphicaleffects" "qt5-quickcontrols2" "qt5-svg"                   # Login manager
     "gnome-themes-extra"                                                           # Themes
     "ttf-jetbrains-mono-nerd" "ttf-droid"                                          # Fonts
@@ -171,11 +171,14 @@ if ask "Set natural scrolling for touchpad?" "Y"; then
    config_touchpad
 fi
 
-log "Setting up the remaining configuration files..."
-config_misc
+log "Configuring cron..."
+config_cron
 
 log "Configuring permissions..."
 config_perms
+
+log "Setting up the remaining configuration files..."
+config_misc
 
 cat << "EOF"
 

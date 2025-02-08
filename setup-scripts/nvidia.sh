@@ -16,5 +16,5 @@ function setup_optimus() {
 
     log "Setting up Optimus Manager..."
     sudo_place $ROOT/config/optimus-manager/optimus-manager.conf /etc/optimus-manager/optimus-manager.conf
-    sudo systemctl enable optimus-manager
+    sudo systemctl enable optimus-manager.service
 }
