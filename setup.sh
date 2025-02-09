@@ -142,6 +142,22 @@ fi
 
 cat << "EOF"
 
+EOF
+
+if ask "Setup SSH keys?" "Y"; then
+   log "Setting passwordless SSH key..."
+   ssh-keygen -t ed25519 -N "" -f $HOME/.ssh/id_ed25519
+
+   log "Setting SSH key with password (stored in $HOME/.ssh/id_ed25519_2)..."
+   ssh-keygen -t ed25519 -f $HOME/.ssh/id_ed25519_2
+
+   SSH_KEYS_SETUP=true
+else
+   SSH_KEYS_SETUP=false
+fi
+
+cat << "EOF"
+
    ___             __ _       
   / __\___  _ __  / _(_) __ _ 
  / /  / _ \| '_ \| |_| |/ _` |
