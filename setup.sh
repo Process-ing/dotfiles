@@ -6,8 +6,9 @@ source $ROOT/setup-scripts/utils.sh
 source $ROOT/setup-scripts/nvidia.sh
 source $ROOT/setup-scripts/packages.sh
 source $ROOT/setup-scripts/shell.sh
+source $ROOT/setup-scripts/ssh.sh
 source $ROOT/setup-scripts/config.sh
-
+source $ROOT/setup-scripts/backup.sh
 
 cat << "EOF"
 
@@ -142,14 +143,23 @@ fi
 
 cat << "EOF"
 
+ __  __         
+/ _\/ _\  /\  /\
+\ \ \ \  / /_/ /
+_\ \_\ \/ __  / 
+\__/\__/\/ /_/  
+                
+
+
 EOF
 
 if ask "Setup SSH keys?" "Y"; then
-   log "Setting passwordless SSH key..."
-   ssh-keygen -t ed25519 -N "" -f $HOME/.ssh/id_ed25519
+   log "Setting passwordless SSH key (stored in $HOME/.ssh/id_ed25519_2)..."
+   setup_passwordless_ssh
 
-   log "Setting SSH key with password (stored in $HOME/.ssh/id_ed25519_2)..."
-   ssh-keygen -t ed25519 -f $HOME/.ssh/id_ed25519_2
+   log "Setting SSH key with password..."
+   prompt "Enter your email" "EMAIL"
+   setup_passworded_ssh $EMAIL
 
    SSH_KEYS_SETUP=true
 else
@@ -195,6 +205,32 @@ config_perms
 
 log "Setting up the remaining configuration files..."
 config_misc
+
+if $SSH_KEYS_SETUP; then
+   cat << "EOF"
+
+   ___            _                    
+  / __\ __ _  ___| | ___   _ _ __  ___ 
+ /__\/// _` |/ __| |/ / | | | '_ \/ __|
+/ \/  \ (_| | (__|   <| |_| | |_) \__ \
+\_____/\__,_|\___|_|\_\\__,_| .__/|___/
+                            |_|      
+
+
+EOF
+
+   log "Setting up automatic backups requires a server with passwordless SSH." "Warn"
+   if ask "Setup automatic backups?" "N"; then
+      prompt "Enter the server destination (remoteuser@remotehost)" "SERVER_HOST"
+      prompt "Enter the server port" "SERVER_PORT"
+      prompt "Enter the server destination folder" "SERVER_FOLDER"
+      config_backups $SERVER_IP $SERVER_PORT $SERVER_FOLDER
+
+      log "Later, you can specify the folders to backup in '~/.config/backup/folders.txt'."
+      log "To restore the backups, use the 'rbackup' command."
+      wait_for_enter
+   fi
+fi
 
 cat << "EOF"
 

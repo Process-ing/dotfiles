@@ -135,7 +135,11 @@ alias kys="systemctl suspend"
 alias reset-screens="$HOME/.config/scripts/reset-screens.sh"
 
 # Commands for gpu mode switching
-alias gpu-switch="$HOME/.config/scripts/gpu-switch.sh" 
+alias gpu-switch="$HOME/.config/scripts/gpu-switch.sh"
+
+# Commands for backup
+alias backup="$HOME/.config/scripts/backup.sh"
+alias rbackup="$HOME/.config/scripts/rbackup.sh"
 
 # Start ssh-agent, with only one process at a time
 if ! pgrep -u "$USER" ssh-agent > /dev/null; then

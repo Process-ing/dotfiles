@@ -50,6 +50,12 @@ function ask() {
     if [[ ("$answer" =~ ^[Yy]$) || ($2 = "Y" && "$answer" =~ ^$) ]]; then return 0; else return 1; fi
 }
 
+function prompt() {
+	echo -en "\033[96m[Script]\033[0m $1: "
+	read answer
+	eval $2="$answer"
+}
+
 function wait_for_enter() {
     echo -en "\033[96m[Script]\033[0m$([[ -n "$1" ]] && echo " $1") Press ENTER to continue..."
     read
