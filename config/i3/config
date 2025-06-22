@@ -211,9 +211,9 @@ default_floating_border pixel 0
 gaps inner 15
 
 # Floating windows
-for_window [title="^Android Emulator*"] floating enable    # Android Emulator
-for_window [title="^AWTTerminalFrame$"] floating enable    # IntelliJ and Lanterna 
-for_window [title="^Volume Control$"] floating enable      # pavucontrol
-for_window [title="^Network Connections$"] floating enable # nm-connection-editor
-
+for_window [title="^Android Emulator*"] floating enable      # Android Emulator
+for_window [title="^AWTTerminalFrame$"] floating enable      # IntelliJ and Lanterna 
+for_window [title="^Volume Control$"] floating enable        # pavucontrol
+for_window [title="^Network Connections$"] floating enable   # nm-connection-editor
+for_window [title="^Parse Tree Inspector$"] floating enable  # ANTLR
 

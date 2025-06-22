@@ -11,7 +11,7 @@ export CHROME_EXECUTABLE="/usr/bin/chromium"
 
 # Set theme variables
 export GTK_THEME=Adwaita:dark
-export GTK2_RC_FILES=/usr/share/themes/Adwaita-dark/gtk-2.0/gtkrc 
+export GTK2_RC_FILES=/usr/share/themes/Adwaita-dark/gtk-2.0/gtkrc
 export QT_STYLE_OVERRIDE=Adwaita-Dark
 
 # Set vim as default text editor

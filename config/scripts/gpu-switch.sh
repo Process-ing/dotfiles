@@ -1,6 +1,6 @@
 #!/bin/bash
 
-GPU_MODE=$(optimus-manager --print-mode | awk '{print $5}')
+GPU_MODE=$(optimus-manager --print-mode | awk '{print $3}')
 
 case "$GPU_MODE" in
     "integrated")
