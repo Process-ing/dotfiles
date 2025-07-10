@@ -224,7 +224,7 @@ EOF
       prompt "Enter the server destination (remoteuser@remotehost)" "SERVER_HOST"
       prompt "Enter the server port" "SERVER_PORT"
       prompt "Enter the server destination folder" "SERVER_FOLDER"
-      config_backups $SERVER_IP $SERVER_PORT $SERVER_FOLDER
+      config_backups $SERVER_HOST $SERVER_PORT $SERVER_FOLDER
 
       log "Later, you can specify the folders to backup in '~/.config/backup/folders.txt'."
       log "To restore the backups, use the 'rbackup' command."
