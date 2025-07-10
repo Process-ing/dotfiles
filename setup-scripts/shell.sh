@@ -21,7 +21,7 @@ function flavor_vim() {
 
 function setup_doom() {
     log "Installing emacs and other packages..."
-    install_official emacs-nativecomp shellcheck fd ripgrep discount
+    install_official emacs shellcheck fd ripgrep discount
 
     log "Installing doom-emacs..."
     git clone --depth 1 https://github.com/doomemacs/doomemacs ~/.config/emacs
