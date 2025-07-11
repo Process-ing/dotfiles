@@ -35,6 +35,11 @@ function config_hibernation() {
 
 function config_touchpad() {
     sudo_place $ROOT/config/X11/30-touchpad.conf /etc/X11/xorg.conf.d/30-touchpad.conf
+    if ask "Set natural scrolling for touchpad?" "Y"; then
+        sudo sed -i 's/^    #Option "NaturalScrolling".*/    Option "NaturalScrolling" "true"/' /etc/X11/xorg.conf.d/30-touchpad.conf
+    else
+        sudo sed -i 's/^    Option "NaturalScrolling".*/    #Option "NaturalScrolling" "true"/' /etc/X11/xorg.conf.d/30-touchpad.conf
+    fi
 }
 
 function config_perms() {
