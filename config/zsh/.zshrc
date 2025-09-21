@@ -149,7 +149,16 @@ if [[ ! -f "$SSH_AUTH_SOCK" ]]; then
     source "$XDG_RUNTIME_DIR/ssh-agent.env" >/dev/null
 fi
 
-# NVM
-if [[ -f '/usr/share/nvm/init-nvm.sh' ]]; then
-	. /usr/share/nvm/init-nvm.sh > /dev/null & disown
-fi
+# NVM (lazy loaded, need to run 'node' before running 'nvm' in the same shell)
+lazy_load_nvm() {
+	unset -f node
+	export NVM_HOME=/usr/share/nvm
+	if [[ -f "$NVM_HOME/init-nvm.sh" ]]; then
+		. "$NVM_HOME/init-nvm.sh"
+	fi
+}
+
+node() {
+	lazy_load_nvm
+	node $@
+}
