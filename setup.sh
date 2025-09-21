@@ -138,7 +138,7 @@ flavor_shell
 log "Configuring vim and neovim"
 flavor_vim
 
-if ask "Setup Emacs with Doom?" "Y"; then
+if ask "Setup Emacs with Doom? [DEPRECATED - MIGHT NOT WORK]" "N"; then
 	setup_doom
 fi
 
