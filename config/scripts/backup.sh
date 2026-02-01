@@ -16,13 +16,14 @@ declare -a FOLDERS
 FOLDERS=( $(cat $HOME/.config/backup/folders.txt) )
 
 if ! $(ssh -i ~/.ssh/id_ed25519_2 -p $PORT $SERVER 'exit' 2> /dev/null); then
+    echo 'Error: Could not access the server'
     exit 1;
 fi
 
 notify-send "Backup started!" -i $HOME/.config/icons/backup.png
 
 for folder in "${FOLDERS[@]}"; do
-    rsync -a --delete --quiet -e "ssh -i ~/.ssh/id_ed25519_2 -p $PORT" "$HOME/$folder" "$SERVER:$SERVER_FOLDER"
+    rsync -a --delete --quiet -e "ssh -i ~/.ssh/id_ed25519_2 -p $PORT" "$HOME/$folder" "$SERVER:$SERVER_FOLDER" || exit 1
 done
 
 notify-send "Backup finished!" -i $HOME/.config/icons/backup.png
