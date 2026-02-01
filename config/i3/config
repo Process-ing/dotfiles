@@ -160,7 +160,6 @@ client.unfocused        #333333 #222222 #888888 #292d2e   #222222
 client.urgent           #90CAF9 #42A5F5 #ffffff #42A5F5   #90CAF9
 
 # Key bindings for Media control keys
-
 bindsym XF86AudioPlay exec playerctl play-pause
 bindsym XF86AudioStop exec playerctl stop
 bindsym XF86AudioNext exec playerctl next
@@ -216,4 +215,3 @@ for_window [title="^AWTTerminalFrame$"] floating enable      # IntelliJ and Lant
 for_window [title="^Volume Control$"] floating enable        # pavucontrol
 for_window [title="^Network Connections$"] floating enable   # nm-connection-editor
 for_window [title="^Parse Tree Inspector$"] floating enable  # ANTLR
-
