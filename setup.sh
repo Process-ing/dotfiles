@@ -227,6 +227,7 @@ EOF
       config_backups $SERVER_HOST $SERVER_PORT $SERVER_FOLDER
 
       log "Later, you can specify the folders to backup in '~/.config/backup/folders.txt'."
+      log "You can also specify more backup servers in '~/.config/backup/dest.txt'."
       log "To restore the backups, use the 'rbackup' command."
       wait_for_enter
    fi
