@@ -83,7 +83,7 @@ official_packages=("base-devel"                                                 
 )
 
 aur_packages=("visual-studio-code-bin" "cmatrix-git" "i3lock-color" "peaclock"
-    "adwaita-qt5-git" "adwaita-qt6-git" "checkupdates-with-aur")
+    "adwaita-qt5-git" "adwaita-qt6-git" "aur-check-updates-bin")
 
 log "Configuring pacman..."
 sudo_place $ROOT/config/pacman/pacman.conf /etc/pacman.conf
