@@ -1,5 +1,6 @@
 # Path variables
 export PATH="$HOME/.config/emacs/bin:$PATH"
+export PATH="$HOME/go:$PATH"
 
 # Flutter/Android variables
 export PATH="$HOME/development/flutter/bin:$PATH"

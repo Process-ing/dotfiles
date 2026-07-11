@@ -8,7 +8,7 @@ case $1 in
 		autorandr portable-vertical
 		;;
 	"")
-		autorandr --change
+		autorandr --change --skip-options crtc
 		;;
 	*)
 		autorandr $1
