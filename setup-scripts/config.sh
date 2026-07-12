@@ -51,6 +51,11 @@ function config_cron() {
     sudo systemctl enable cronie.service
 }
 
+function config_gsettings() {
+    gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
+    gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita'
+}
+
 function config_misc() {
     place $ROOT/config/dunst/dunstrc $HOME/.config/dunst/dunstrc
     place $ROOT/config/fastfetch/config.jsonc $HOME/.config/fastfetch/config.jsonc
@@ -59,6 +64,7 @@ function config_misc() {
     place $ROOT/config/gtk/.gtkrc-2.0 $HOME/.gtkrc-2.0
     place $ROOT/config/gtk/gtk-2.0/gtkfilechooser.ini $HOME/.config/gtk-2.0/gtkfilechooser.ini
     place $ROOT/config/gtk/gtk-3.0/settings.ini $HOME/.config/gtk-3.0/settings.ini
+    config_gsettings
     place $ROOT/config/i3/config $HOME/.config/i3/config
     place_dir $ROOT/config/kitty/ $HOME/.config/kitty/
     place $ROOT/config/picom/picom.conf $HOME/.config/picom/picom.conf
