@@ -68,6 +68,7 @@ function config_misc() {
     place $ROOT/config/i3/config $HOME/.config/i3/config
     place_dir $ROOT/config/kitty/ $HOME/.config/kitty/
     place $ROOT/config/picom/picom.conf $HOME/.config/picom/picom.conf
+    place $ROOT/config/fontconfig/fonts.conf $HOME/.config/fontconfig/fonts.conf
     place_dir $ROOT/config/polybar/ $HOME/.config/polybar/
     place_dir $ROOT/config/rofi/ $HOME/.config/rofi/
     place_dir $ROOT/config/wallpapers $HOME/.config/wallpapers/
