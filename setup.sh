@@ -69,17 +69,18 @@ EOF
 official_packages=("base-devel"                                                    # AUR helper
     "linux-lts" "linux-lts-headers"                                                # Kernel
     "os-prober" "efibootmgr" "grub" "sbctl"                                        # Bootloader
-    "xorg" "xorg-xinit" "i3-wm"                                                    # Xorg adn i3
+    "xorg" "xorg-xinit" "i3-wm"                                                    # Xorg and i3
     "networkmanager"                                                               # Network
     "firefox" "discord" "nemo" "feh" "vim" "neovim"                                # Apps
     "kitty" "dunst" "picom" "polybar" "rofi" "zsh" "fastfetch"                     # Terminal and status bar
     "pipewire" "pipewire-pulse" "pipewire-alsa" "pipewire-jack" "pavucontrol"      # Audio
     "sl" "xclip" "playerctl" "flameshot" "bluez" "trash-cli" "man-db" "man-pages"
     "udiskie" "arandr" "autorandr" "btop" "powertop" "tlp" "brightnessctl"
-    "polkit-gnome" "unzip" "rsync" "cronie"                                        # Utilities
+    "polkit-gnome" "unzip" "rsync"                                                 # Utilities
     "sddm" "qt5-graphicaleffects" "qt5-quickcontrols2" "qt5-svg"                   # Login manager
     "gnome-themes-extra"                                                           # Themes
     "ttf-jetbrains-mono-nerd" "ttf-droid"                                          # Fonts
+    "pacman-contrib"                                                               # Updates
 )
 
 aur_packages=("visual-studio-code-bin" "cmatrix-git" "i3lock-color" "peaclock"
